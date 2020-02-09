@@ -23,18 +23,11 @@ namespace SimpleApi
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Database connection string.
-            // Make sure to update the Password value below from "Your_password123" to your actual password.
-            var connection = @"Server=db;Database=master;User=sa;Password=SqlServer_vol144vo;";
-
-            // This line uses 'UseSqlServer' in the 'options' parameter
-            // with the connection string defined above.
+            var connection = @"Server=benchpress.local,1433;Database=simpleapi;User=sa;Password=SqlServer_vol144vo;";
             services.AddDbContext<LibraryContext>(
                 options => options.UseSqlServer(connection));
-
             services.AddControllers();
         }
 
