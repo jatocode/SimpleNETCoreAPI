@@ -14,12 +14,14 @@ namespace SimpleApi
         [HttpGet]
         public async Task<ActionResult<List<BookDto>>> GetAll([FromServices]LibraryDbContext db)
         {
-            var books = await db.Books.Select(b => new BookDto {
+            var books = await db.Books.Select(b => new BookDto
+            {
                 ISBN = b.ISBN,
                 Title = b.Title,
                 Pages = b.Pages,
                 Language = b.Language,
-                Author = new AuthorDto {
+                Author = new AuthorDto
+                {
                     Name = b.Author.Name,
                     ID = b.Author.ID
                 }
@@ -28,9 +30,20 @@ namespace SimpleApi
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Book>> Get(long id, [FromServices]LibraryDbContext db)
+        public async Task<ActionResult<BookDto>> Get(string id, [FromServices]LibraryDbContext db)
         {
-            var book = await db.Books.FindAsync(id);
+            var book = await db.Books.Where(b => b.ISBN == id).Select(b => new BookDto
+            {
+                ISBN = b.ISBN,
+                Title = b.Title,
+                Pages = b.Pages,
+                Language = b.Language,
+                Author = new AuthorDto
+                {
+                    Name = b.Author.Name,
+                    ID = b.Author.ID
+                }
+            }).FirstOrDefaultAsync();
             if (book == null)
             {
                 return NotFound();
