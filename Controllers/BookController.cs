@@ -32,6 +32,7 @@ namespace SimpleApi
         public async Task Post(Book book, [FromServices]LibraryDbContext db)
         {
             db.Book.Add(book);
+            db.Author.Add(book.Author);
             await db.SaveChangesAsync();
         }
 
