@@ -7,14 +7,17 @@ namespace SimpleApi
 {
     public class Program
     {
-        static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            await Host.CreateDefaultBuilder(args)
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseUrls("http://benchpress.local:5000");
                     webBuilder.UseStartup<Startup>();
-                }).Build().RunAsync();
+                });
         }
-    }
 }

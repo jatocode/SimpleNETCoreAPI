@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SimpleApi;
 
 namespace SimpleApi.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20200209214613_AuthorId")]
+    partial class AuthorId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
