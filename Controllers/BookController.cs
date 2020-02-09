@@ -14,6 +14,7 @@ namespace SimpleApi
         public async Task<ActionResult<List<Book>>> GetAll([FromServices]LibraryDbContext db)
         {
             var books = await db.Book.ToListAsync();
+            var authors = await db.Author.ToListAsync(); // For debug
             return books;
         }
 

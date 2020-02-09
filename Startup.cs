@@ -19,7 +19,7 @@ namespace SimpleApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Server=benchpress.local,1433;Database=simpleapi;User=sa;Password=SqlServer_vol144vo;";
+            var connection = @"Server=benchpress.local,1433;Database=simpleapi;User=sa;Password=SqlServer;";
             services.AddDbContext<LibraryDbContext>(
                 options => options.UseSqlServer(connection));
             services.AddControllers();
