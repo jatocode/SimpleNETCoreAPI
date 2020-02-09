@@ -9,7 +9,7 @@ using SimpleApi;
 
 namespace SimpleApi.Migrations
 {
-    [DbContext(typeof(LibraryContext))]
+    [DbContext(typeof(LibraryDbContext))]
     [Migration("20200209193834_Initial")]
     partial class Initial
     {

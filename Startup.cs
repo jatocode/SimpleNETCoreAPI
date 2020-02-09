@@ -26,25 +26,15 @@ namespace SimpleApi
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = @"Server=benchpress.local,1433;Database=simpleapi;User=sa;Password=SqlServer_vol144vo;";
-            services.AddDbContext<LibraryContext>(
+            services.AddDbContext<LibraryDbContext>(
                 options => options.UseSqlServer(connection));
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            //            app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

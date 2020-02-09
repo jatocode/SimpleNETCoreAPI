@@ -2,9 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SimpleApi
 {
-    public class LibraryContext : DbContext
+    public class LibraryDbContext : DbContext
     {
-        public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
+        public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options)
         {
         }
         public DbSet<Book> Book { get; set; }
